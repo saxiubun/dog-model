@@ -10,7 +10,7 @@ public class FirstLayer {
 
     public static void main(String[] args) {
         System.out.println("请输入你要加载的图片名");
-        int img[][][]=convert2DArray(FirstLayer.loadImg("test.png"));
+        int img[][][]=convert2DArray(FirstLayer.loadImg("test2.png"));
         printArray(img,0);
     }
 
@@ -36,7 +36,7 @@ public class FirstLayer {
         int g=1;
         int b=2;
         int[] date=new int[width*height];
-        int[][][] img=new int[width][height][channel];
+        int[][][] img=new int[height][width][channel];
 
         bf.getRGB(0,0,width,height,date,0,width);
 
@@ -44,7 +44,6 @@ public class FirstLayer {
 
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                System.out.println("i:"+i+",j="+j);
                 img[i][j][r]=(date[i*width+j]>>16)& 0xFF;
                 img[i][j][g]=(date[i*width+j]>>8)& 0xFF;
                 img[i][j][b]=(date[i*width+j])& 0xFF;
@@ -54,6 +53,8 @@ public class FirstLayer {
     }
 
     public static void printArray(int[][][] imgArray,int channel){
+        System.out.println(imgArray.length);
+        System.out.println(imgArray[0].length);
         for (int i = 0; i <imgArray.length ; i++) {
             for (int j = 0; j <imgArray[0].length ; j++) {
                 System.out.print(imgArray[i][j][channel]+"\t");
