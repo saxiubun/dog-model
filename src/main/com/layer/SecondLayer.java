@@ -4,10 +4,10 @@ public class SecondLayer {
     public static void main(String[] args) {
 
         int img[][][]=FirstLayer.convert2DArray(FirstLayer.loadImg("test.png"));
-        FirstLayer.printArray(img,1);
+        FirstLayer.printArray(img,0);
         System.out.println("--------------------");
         img=filterImg(img);
-        FirstLayer.printArray(img,1);
+        FirstLayer.printArray(img,0);
     }
 
     boolean onHandle=true;//是否为on时间否则为off时间
@@ -17,14 +17,14 @@ public class SecondLayer {
         for (int i = 0; i <imgArray.length ; i++) {
             for (int j = 0; j < imgArray[0].length; j++) {
                 for (int k = 0; k < imgArray[0][0].length; k++) {
-                    secArry[i][j][k]=convFilter(imgArray,i,j,k,1);
+                    secArry[i][j][k]=convFilter(imgArray,i,j,k,1,10);
                 }
             }
         }
         return secArry;
     }
 
-    public static int convFilter(int[][][] imgArray,int x,int y,int channle,int radius){
+    public static int convFilter(int[][][] imgArray,int x,int y,int channle,int radius,int border){
         int maxx=x+radius;
         int minx=x-radius;
         int maxy=y+radius;
@@ -52,7 +52,7 @@ public class SecondLayer {
                 }
             }
         }
-        if(inner-outsider/8>0){
+        if(inner-outsider/8>border){
             return sum;
         }
         else {
