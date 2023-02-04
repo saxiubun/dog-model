@@ -4,10 +4,10 @@ public class SecondLayer {
     public static void main(String[] args) {
 
         int img[][][]=FirstLayer.convert2DArray(FirstLayer.loadImg("test.png"));
-        FirstLayer.printArray(img,0);
+        FirstLayer.printArray(img,1);
         System.out.println("--------------------");
         img=filterImg(img);
-        FirstLayer.printArray(img,0);
+        FirstLayer.printArray(img,1);
     }
 
     boolean onHandle=true;//是否为on时间否则为off时间
@@ -33,7 +33,7 @@ public class SecondLayer {
         int inner=0;
         int outsider=0;
 
-
+        int sum=imgArray[x][y][channle];
 
         for (int i = minx; i <= maxx; i++) {
             for (int j = miny; j <=maxy ; j++) {
@@ -53,7 +53,7 @@ public class SecondLayer {
             }
         }
         if(inner-outsider/8>0){
-            return inner-outsider/8;
+            return sum;
         }
         else {
             return 0;

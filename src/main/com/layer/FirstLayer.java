@@ -54,7 +54,7 @@ public class FirstLayer {
     public static void printArray(int[][][] imgArray,int channel){
         for (int i = 0; i <imgArray.length ; i++) {
             for (int j = 0; j <imgArray[0].length ; j++) {
-                System.out.print(imgArray[i][j][channel]+"\t");
+                System.out.print(imgArray[j][i][channel]+"\t");
             }
             System.out.println();
         }
