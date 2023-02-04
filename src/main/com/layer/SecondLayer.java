@@ -3,7 +3,7 @@ package com.layer;
 public class SecondLayer {
     public static void main(String[] args) {
 
-        int img[][][]=FirstLayer.convert2DArray(FirstLayer.loadImg("test.png"));
+        int img[][][]=FirstLayer.convert2DArray(FirstLayer.loadImg("test2.png"));
         FirstLayer.printArray(img,0);
         System.out.println("--------------------");
         img=filterImg(img);
@@ -17,7 +17,7 @@ public class SecondLayer {
         for (int i = 0; i <imgArray.length ; i++) {
             for (int j = 0; j < imgArray[0].length; j++) {
                 for (int k = 0; k < imgArray[0][0].length; k++) {
-                    secArry[i][j][k]=convFilter(imgArray,i,j,k,1,10);
+                    secArry[i][j][k]=convFilter(imgArray,i,j,k,1,0);
                 }
             }
         }

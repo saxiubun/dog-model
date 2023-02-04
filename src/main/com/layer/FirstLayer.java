@@ -10,7 +10,7 @@ public class FirstLayer {
 
     public static void main(String[] args) {
         System.out.println("请输入你要加载的图片名");
-        int img[][][]=convert2DArray(FirstLayer.loadImg("test.png"));
+        int img[][][]=convert2DArray(FirstLayer.loadImg("test2.png"));
         printArray(img,0);
     }
 
@@ -31,7 +31,6 @@ public class FirstLayer {
     public static int[][][] convert2DArray(BufferedImage bf){
         int width=bf.getWidth();
         int height=bf.getHeight();
-        System.out.println("高："+height+"，宽:"+width);
         int channel=3;
         int r=0;
         int g=1;
@@ -41,12 +40,14 @@ public class FirstLayer {
 
         bf.getRGB(0,0,width,height,date,0,width);
 
+        System.out.println(date.length);
 
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                img[i][j][r]=(date[i*width+j]>>16)& 0xFF;
-                img[i][j][g]=(date[i*width+j]>>8)& 0xFF;
-                img[i][j][b]=(date[i*width+j])& 0xFF;
+                System.out.println("i:"+i+",j="+j);
+                img[i][j][r]=(date[i*height+j]>>16)& 0xFF;
+                img[i][j][g]=(date[i*height+j]>>8)& 0xFF;
+                img[i][j][b]=(date[i*height+j])& 0xFF;
             }
         }
         return img;
